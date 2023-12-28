@@ -1,4 +1,4 @@
-module gitub.com/ide-jun/go_todo_app
+module github.com/ide-jun/go_todo_app
 
 go 1.21.4
 
