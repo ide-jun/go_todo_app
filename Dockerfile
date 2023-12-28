@@ -1,5 +1,5 @@
 # デプロイ用コンテナに含めるバイナリを作成するコンテナ
-FROM golang:1.21.4-bullseye as deploy-builder
+FROM golang:1.21.5-bullseye as deploy-builder
 
 WORKDIR /app
 
@@ -14,7 +14,7 @@ RUN go build -trimpath -ldflags "-w -s" -o app
 # デプロイ用のコンテナ
 FROM debian:bullseye-slim as deploy
 
-RUN apy-get update
+RUN apt-get update
 
 COPY --from=deploy-builder /app/app .
 
@@ -23,7 +23,7 @@ CMD ["./app"]
 # ---
 
 # ローカル開発環境で利用するホットリロード環境
-FROM golang:1.21.4 as dev
+FROM golang:1.21.5 as dev
 WORKDIR /app
 RUN go install github.com/cosmtrek/air@latest
 CMD ["air"]
