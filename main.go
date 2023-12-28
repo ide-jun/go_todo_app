@@ -8,7 +8,7 @@ import (
 	"net/http"
 	"os"
 
-	"gitub.com/ide-jun/go_to_app/config"
+	"github.com/ide-jun/go_todo_app/config"
 	"golang.org/x/sync/errgroup"
 )
 
